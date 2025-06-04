@@ -1,17 +1,10 @@
-# AngryBirdsGame
+# Opel Astra H Enthusiast Site
 
-This repository now contains a small Java Swing game inspired by **Angry Birds**. Set the launch angle and power, press **Launch**, and try to hit the target.
+This repository contains a simple static website dedicated to the Opel Astra H. It includes:
 
-## Build
+- **Home page** with introductory video
+- **Parts catalog** with search functionality
+- **User manual** with maintenance tips
+- **Fan page** where visitors can share short messages
 
-```bash
-javac AngryBirdsGame.java
-```
-
-## Run
-
-```bash
-java AngryBirdsGame
-```
-
-The game opens a window with sliders for angle and power. After adjusting them, click **Launch** to fire the bird. A simple physics simulation draws the trajectory and checks whether the bird hits the target.
+To view the site, open `index.html` in your browser. No build step is required.
