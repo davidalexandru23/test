@@ -1,17 +1,17 @@
-# WeatherApp
+# AngryBirdsGame
 
-This repository contains a simple Java Swing application that fetches and displays the current temperature using the [Open-Meteo](https://open-meteo.com/) API.
+This repository now contains a small Java Swing game inspired by **Angry Birds**. Set the launch angle and power, press **Launch**, and try to hit the target.
 
 ## Build
 
 ```bash
-javac WeatherApp.java
+javac AngryBirdsGame.java
 ```
 
 ## Run
 
 ```bash
-java WeatherApp
+java AngryBirdsGame
 ```
 
-The application prompts for latitude and longitude coordinates and then shows the current temperature in Celsius. It requires an internet connection to retrieve weather data.
+The game opens a window with sliders for angle and power. After adjusting them, click **Launch** to fire the bird. A simple physics simulation draws the trajectory and checks whether the bird hits the target.
