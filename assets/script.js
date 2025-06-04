@@ -28,4 +28,44 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Simple chatbot for Opel information
+    const chatForm = document.getElementById('chat-form');
+    const chatInput = document.getElementById('chat-message');
+    const chatBody = document.getElementById('chat-body');
+
+    if (chatForm && chatInput && chatBody) {
+        chatForm.addEventListener('submit', e => {
+            e.preventDefault();
+            const message = chatInput.value.trim();
+            if (!message) return;
+            addChat('You', message);
+            addChat('Bot', getReply(message));
+            chatInput.value = '';
+        });
+    }
+
+    function addChat(sender, text) {
+        const p = document.createElement('p');
+        p.textContent = sender + ': ' + text;
+        chatBody.appendChild(p);
+        chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function getReply(msg) {
+        const m = msg.toLowerCase();
+        if (m.includes('astra')) {
+            return 'Opel Astra H este cunoscut pentru fiabilitate si manevrabilitate.';
+        }
+        if (m.includes('motor')) {
+            return 'Astra H a fost echipat cu motoare precum benzina 1.6 si diesel 1.7 CDTI.';
+        }
+        if (m.includes('consum')) {
+            return 'Consumul pentru variantele diesel este in jur de 5-6 l/100 km.';
+        }
+        if (m.includes('pret')) {
+            return 'Pretul variaza in functie de starea masinii si nivelul de dotari.';
+        }
+        return 'Imi place sa discut despre modelele Opel!';
+    }
 });
