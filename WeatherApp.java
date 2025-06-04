@@ -52,13 +52,24 @@ public class WeatherApp {
         }
 
         try {
+            double latVal = Double.parseDouble(lat);
+            double lonVal = Double.parseDouble(lon);
+
             String urlStr = String.format(
-                "https://api.open-meteo.com/v1/forecast?latitude=%s&longitude=%s&current_weather=true",
-                URLEncoder.encode(lat, "UTF-8"),
-                URLEncoder.encode(lon, "UTF-8"));
+                java.util.Locale.US,
+                "https://api.open-meteo.com/v1/forecast?latitude=%f&longitude=%f&current_weather=true",
+                latVal,
+                lonVal);
             URL url = new URL(urlStr);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestProperty("Accept", "application/json");
+            conn.setRequestProperty("User-Agent", "WeatherApp/1.0");
+
+            if (conn.getResponseCode() != HttpURLConnection.HTTP_OK) {
+                resultLabel.setText("HTTP error: " + conn.getResponseCode());
+                return;
+            }
+
             BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
             StringBuilder response = new StringBuilder();
             String line;
@@ -69,6 +80,8 @@ public class WeatherApp {
 
             String temperature = parseTemperature(response.toString());
             resultLabel.setText("Temperature: " + temperature + " °C");
+        } catch (NumberFormatException nfe) {
+            resultLabel.setText("Invalid coordinate format.");
         } catch (Exception ex) {
             resultLabel.setText("Error: " + ex.getMessage());
         }

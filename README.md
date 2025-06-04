@@ -15,3 +15,4 @@ java WeatherApp
 ```
 
 The application prompts for latitude and longitude coordinates and then shows the current temperature in Celsius. It requires an internet connection to retrieve weather data.
+Coordinates must be entered using decimal points (e.g., `47.5`) rather than commas.
